@@ -1,0 +1,12 @@
+{
+  "entity_type": "wolf_port:wolf",
+  "type_provider": {
+    "range": 9,
+    "nbt": [
+      {
+        "nbt_type": "INTEGER",
+        "nbt_field": "Variant"
+      }
+    ]
+  }
+}

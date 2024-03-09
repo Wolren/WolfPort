@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "wolf_port",
+  "version": "1.0.0-1.20.3",
+  "name": "Wolf Port",
+  "description": "A port mod replacing classic wolves with 24w10a+ one and making tamed ones have more hp (No other features added)",
+  "authors": [
+    "Wolren"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/project/wolfport",
+    "sources": "https://github.com/Wolren/WolfPort",
+    "repo": "https://github.com/Wolren/WolfPort",
+    "issues": "https://github.com/Wolren/WolfPort/issues"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "net.wolren.wolf_port.WolfPortClient"
+    ],
+    "main": [
+      "net.wolren.wolf_port.WolfPort"
+    ]
+  },
+  "mixins": [
+    "wolf_port.mixins.json"
+  ],
+  "icon": "assets/wolf_port/icon.png",
+  "depends": {
+    "fabricloader": ">=0.14.23",
+    "fabric": "*",
+    "minecraft": "1.20.3"
+  }
+}
