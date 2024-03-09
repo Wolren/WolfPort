@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.wolren.wolf_port.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "CanSpawnMixin",
+    "SpawnEggItemBabyMixin",
+    "SpawnEggItemUseOnBlockMixin",
+    "SpawnHelperMixin"
+  ],
+  "client": [
+    "SpawnEggItemBabyMixin",
+    "SpawnEggItemUseOnBlockMixin"
+  ],
+  "server": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

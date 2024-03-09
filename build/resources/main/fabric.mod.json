@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "wolf_port",
+  "version": "1.0.0-1.20.2",
+  "name": "Wolf Port",
+  "description": "A port mod replacing classic wolves with 24w10a+ one (No other features added)",
+  "authors": [
+    "Wolren"
+  ],
+  "contact": {
+    "sources": "https://github.com/Wolren/wolf_port",
+    "repo": "https://github.com/Wolren/wolf_port"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "net.wolren.wolf_port.WolfPortClient"
+    ],
+    "main": [
+      "net.wolren.wolf_port.WolfPort"
+    ]
+  },
+  "mixins": [
+    "wolf_port.mixins.json"
+  ],
+  "icon": "assets/wolf_port/icon.png",
+  "depends": {
+    "fabricloader": ">=0.14.22",
+    "fabric": "*",
+    "minecraft": "1.20.2"
+  }
+}
