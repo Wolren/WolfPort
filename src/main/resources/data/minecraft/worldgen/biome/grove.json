@@ -127,7 +127,7 @@
         "weight": 8
       },
       {
-        "type": "wolf_port:new_wolf",
+        "type": "minecraft:wolf",
         "maxCount": 1,
         "minCount": 1,
         "weight": 1

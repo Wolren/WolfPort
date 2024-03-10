@@ -1,5 +1,5 @@
 {
-  "entity_type": "wolf_port:wolf",
+  "entity_type": "minecraft:wolf",
   "type_provider": {
     "range": 9,
     "nbt": [
