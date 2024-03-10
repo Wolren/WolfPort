@@ -46,13 +46,10 @@ public abstract class WolfEntityMixin extends TameableEntity implements Angerabl
         super(entityType, world);
     }
 
-    @Final
     @Shadow
     private static final TrackedData<Boolean> BEGGING = DataTracker.registerData(WolfEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-    @Final
     @Shadow
     private static final TrackedData<Integer> COLLAR_COLOR = DataTracker.registerData(WolfEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    @Final
     @Shadow
     private static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(WolfEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
