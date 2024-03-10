@@ -32,7 +32,7 @@ public abstract class WolfEntityRendererMixin extends MobEntityRenderer<WolfEnti
         if (entity.isTamed()) {
             basePath += "_tamed";
         }
-        if (entity.hasAngerTime()) {
+        if (entity.hasAngerTime() && !entity.isTamed()) {
             basePath += "_angry";
         }
 
