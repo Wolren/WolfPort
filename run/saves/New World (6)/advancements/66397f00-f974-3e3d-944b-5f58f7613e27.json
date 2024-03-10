@@ -1,0 +1,35 @@
+{
+  "minecraft:husbandry/breed_an_animal": {
+    "criteria": {
+      "bred": "2024-03-10 12:22:11 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/bone_meal": {
+    "criteria": {
+      "has_bone": "2024-03-10 12:21:52 +0100"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:beach": "2024-03-10 12:24:49 +0100",
+      "minecraft:dark_forest": "2024-03-10 12:20:05 +0100",
+      "minecraft:lukewarm_ocean": "2024-03-10 12:24:35 +0100",
+      "minecraft:river": "2024-03-10 12:21:17 +0100",
+      "minecraft:stony_shore": "2024-03-10 12:22:36 +0100",
+      "minecraft:forest": "2024-03-10 12:20:59 +0100",
+      "minecraft:old_growth_birch_forest": "2024-03-10 12:21:03 +0100",
+      "minecraft:savanna": "2024-03-10 12:24:31 +0100",
+      "minecraft:plains": "2024-03-10 12:21:27 +0100"
+    },
+    "done": false
+  },
+  "minecraft:husbandry/tame_an_animal": {
+    "criteria": {
+      "tamed_animal": "2024-03-10 12:21:53 +0100"
+    },
+    "done": true
+  },
+  "DataVersion": 2975
+}
