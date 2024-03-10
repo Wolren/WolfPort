@@ -27,7 +27,7 @@
     "wolf_port.mixins.json"
   ],
   "icon": "assets/wolf_port/icon.png",
-  "depends": {
+"depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
     "minecraft": "${minecraft_version}"

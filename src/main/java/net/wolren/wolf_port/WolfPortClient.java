@@ -4,14 +4,14 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.wolren.wolf_port.entity.ModEntities;
-import net.wolren.wolf_port.entity.client.NewWolfRenderer;
+import net.minecraft.client.render.entity.WolfEntityRenderer;
+import net.minecraft.entity.EntityType;
 
 @Environment(EnvType.CLIENT)
 public class WolfPortClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        EntityRendererRegistry.register(ModEntities.NEW_WOLF, NewWolfRenderer::new);
+        EntityRendererRegistry.register(EntityType.WOLF, WolfEntityRenderer::new);
     }
 }
 
