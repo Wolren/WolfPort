@@ -18,7 +18,7 @@ public class WolfPort implements ModInitializer {
     public void onInitialize() {
         ModEntities.registerEntities();
         ServerEntityEvents.ENTITY_LOAD.register((entity, world) -> {
-            if (entity instanceof WolfEntity) {
+            if (entity instanceof WolfEntity && !(entity instanceof NewWolfEntity)) {
                 entity.remove(Entity.RemovalReason.DISCARDED);
             }
         });
