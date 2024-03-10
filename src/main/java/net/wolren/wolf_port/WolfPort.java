@@ -10,6 +10,9 @@ import net.wolren.wolf_port.entity.NewWolfEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class WolfPort implements ModInitializer {
     public static final String MOD_ID = "wolf_port";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
@@ -18,7 +21,7 @@ public class WolfPort implements ModInitializer {
     public void onInitialize() {
         ModEntities.registerEntities();
         ServerEntityEvents.ENTITY_LOAD.register((entity, world) -> {
-            if (entity instanceof WolfEntity) {
+            if (entity instanceof WolfEntity && !(entity instanceof NewWolfEntity)) {
                 entity.remove(Entity.RemovalReason.DISCARDED);
             }
         });

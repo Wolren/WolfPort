@@ -42,9 +42,9 @@ public class SpawnEggItemUseOnBlockMixin extends Item {
                     pos = blockPos.offset(context.getSide());
                 }
 
-                EntityType<?> sheep = ModEntities.NEW_WOLF;
+                EntityType<?> newWolf = ModEntities.NEW_WOLF;
 
-                sheep.spawnFromItemStack(
+                newWolf.spawnFromItemStack(
                         (ServerWorld)world,
                         itemStack,
                         context.getPlayer(),

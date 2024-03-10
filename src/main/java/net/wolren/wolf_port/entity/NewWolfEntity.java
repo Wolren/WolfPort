@@ -41,7 +41,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.UUID;
 import java.util.function.Predicate;
 
-public class NewWolfEntity extends TameableEntity implements Angerable {
+public class NewWolfEntity extends WolfEntity implements Angerable {
     private static final TrackedData<Boolean> BEGGING = DataTracker.registerData(NewWolfEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Integer> COLLAR_COLOR = DataTracker.registerData(NewWolfEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(NewWolfEntity.class, TrackedDataHandlerRegistry.INTEGER);
