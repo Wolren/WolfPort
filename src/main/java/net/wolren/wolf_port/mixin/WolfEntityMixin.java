@@ -11,10 +11,17 @@ import net.minecraft.entity.mob.Angerable;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.passive.WolfEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.DyeItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.DyeColor;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Util;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
@@ -39,15 +46,15 @@ public abstract class WolfEntityMixin extends TameableEntity implements Angerabl
         super(entityType, world);
     }
 
-    @Final
     @Shadow
     private static final TrackedData<Boolean> BEGGING = DataTracker.registerData(WolfEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-    @Final
     @Shadow
     private static final TrackedData<Integer> COLLAR_COLOR = DataTracker.registerData(WolfEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    @Final
     @Shadow
     private static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(WolfEntity.class, TrackedDataHandlerRegistry.INTEGER);
+
+    @Shadow public abstract void setCollarColor(DyeColor color);
+
     @Unique
     private static final TrackedData<Integer> DATA_ID_TYPE_VARIANT = DataTracker.registerData(WolfEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
@@ -106,6 +113,72 @@ public abstract class WolfEntityMixin extends TameableEntity implements Angerabl
         cir.setReturnValue(wolfEntity);
     }
 
+    @Inject(
+            at = {@At("HEAD")},
+            method = {"interactMob"},
+            cancellable = true)
+    public void interactMob(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
+        ItemStack itemStack = player.getStackInHand(hand);
+        Item item = itemStack.getItem();
+        if (this.getWorld().isClient) {
+            boolean bl = this.isOwner(player) || this.isTamed() || itemStack.isOf(Items.BONE) && !this.isTamed() && !this.hasAngerTime();
+            cir.setReturnValue(bl ? ActionResult.CONSUME : ActionResult.PASS);
+        } else if (this.isTamed()) {
+            if (this.isBreedingItem(itemStack) && this.getHealth() < this.getMaxHealth()) {
+                if (!player.getAbilities().creativeMode) {
+                    itemStack.decrement(1);
+                }
+
+                this.heal((float)item.getFoodComponent().getHunger());
+                cir.setReturnValue(ActionResult.SUCCESS);
+            } else {
+                if (item instanceof DyeItem dyeItem && this.isOwner(player)) {
+                    DyeColor dyeColor = dyeItem.getColor();
+                    if (dyeColor != this.getCollarColor()) {
+                        this.setCollarColor(dyeColor);
+                        if (!player.getAbilities().creativeMode) {
+                            itemStack.decrement(1);
+                        }
+
+                        cir.setReturnValue(ActionResult.SUCCESS);
+                    }
+
+                    cir.setReturnValue(super.interactMob(player, hand));
+                }
+
+                ActionResult actionResult = super.interactMob(player, hand);
+                if ((!actionResult.isAccepted() || this.isBaby()) && this.isOwner(player)) {
+                    this.setSitting(!this.isSitting());
+                    this.jumping = false;
+                    this.navigation.stop();
+                    this.setTarget(null);
+                    cir.setReturnValue(ActionResult.SUCCESS);
+                } else {
+                    cir.setReturnValue(actionResult);
+                }
+            }
+        } else if (itemStack.isOf(Items.BONE) && !this.hasAngerTime()) {
+            if (!player.getAbilities().creativeMode) {
+                itemStack.decrement(1);
+            }
+
+            if (this.random.nextInt(3) == 0) {
+                this.setOwner(player);
+                this.updateAttributesForTamed();
+                this.navigation.stop();
+                this.setTarget(null);
+                this.setSitting(true);
+                this.getWorld().sendEntityStatus(this, (byte)7);
+            } else {
+                this.getWorld().sendEntityStatus(this, (byte)6);
+            }
+
+            cir.setReturnValue(ActionResult.SUCCESS);
+        } else {
+            cir.setReturnValue(super.interactMob(player, hand));
+        }
+    }
+
     /**
      * @author Wolren
      * @reason To prevent id duplication
@@ -118,6 +191,7 @@ public abstract class WolfEntityMixin extends TameableEntity implements Angerabl
         this.dataTracker.startTracking(ANGER_TIME, 0);
         this.dataTracker.startTracking(DATA_ID_TYPE_VARIANT, 0);
     }
+
 
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty,
