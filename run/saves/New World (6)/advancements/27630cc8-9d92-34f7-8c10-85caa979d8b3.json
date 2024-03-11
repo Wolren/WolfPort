@@ -1,0 +1,11 @@
+{
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:forest": "2024-03-11 16:25:10 +0100",
+      "minecraft:savanna_plateau": "2024-03-11 16:25:00 +0100",
+      "minecraft:plains": "2024-03-11 16:24:47 +0100"
+    },
+    "done": false
+  },
+  "DataVersion": 2730
+}

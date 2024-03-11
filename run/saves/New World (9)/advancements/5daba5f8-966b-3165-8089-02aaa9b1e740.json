@@ -1,0 +1,15 @@
+{
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:jungle_edge": "2024-03-11 16:38:43 +0100",
+      "minecraft:forest": "2024-03-11 16:38:35 +0100",
+      "minecraft:taiga": "2024-03-11 16:39:01 +0100",
+      "minecraft:desert": "2024-03-11 16:37:34 +0100",
+      "minecraft:river": "2024-03-11 16:37:42 +0100",
+      "minecraft:savanna": "2024-03-11 16:38:17 +0100",
+      "minecraft:plains": "2024-03-11 16:38:24 +0100"
+    },
+    "done": false
+  },
+  "DataVersion": 2730
+}
