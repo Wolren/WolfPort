@@ -1,0 +1,7 @@
+v1	named	intermediary
+FIELD	net/wolren/wolf_port/mixin/WolfEntityMixin	Lnet/minecraft/entity/data/TrackedData;	BEGGING	field_6946
+FIELD	net/wolren/wolf_port/mixin/WolfEntityMixin	Lnet/minecraft/entity/data/TrackedData;	COLLAR_COLOR	field_6950
+FIELD	net/wolren/wolf_port/mixin/WolfEntityMixin	Lnet/minecraft/entity/data/TrackedData;	ANGER_TIME	field_25373
+METHOD	net/wolren/wolf_port/mixin/WolfEntityMixin	()Lnet/minecraft/util/DyeColor;	getCollarColor	method_6713
+METHOD	net/wolren/wolf_port/mixin/WolfEntityMixin	(Lnet/minecraft/util/DyeColor;)V	setCollarColor	method_6708
+METHOD	net/wolren/wolf_port/mixin/WolfEntityMixin	()V	initDataTracker	method_5693
