@@ -1,6 +1,7 @@
 package net.wolren.wolf_port.utils;
 
 import net.minecraft.util.Identifier;
+import net.wolren.wolf_port.WolfPort;
 import net.wolren.wolf_port.entity.variant.WolfVariant;
 
 import java.util.HashMap;
@@ -15,6 +16,8 @@ public class WolfVariantUtil {
         BIOME_TO_VARIANT_MAP.put(new Identifier("minecraft:snowy_taiga"), WolfVariant.ASHEN);
         BIOME_TO_VARIANT_MAP.put(new Identifier("minecraft:giant_tree_taiga"), WolfVariant.BLACK);
         BIOME_TO_VARIANT_MAP.put(new Identifier("minecraft:giant_spruce_taiga"), WolfVariant.CHESTNUT);
+        BIOME_TO_VARIANT_MAP.put(new Identifier("minecraft:giant_tree_taiga_hills"), WolfVariant.BLACK);
+        BIOME_TO_VARIANT_MAP.put(new Identifier("minecraft:giant_spruce_taiga_hills"), WolfVariant.CHESTNUT);
         BIOME_TO_VARIANT_MAP.put(new Identifier("minecraft:jungle_edge"), WolfVariant.RUSTY);
         BIOME_TO_VARIANT_MAP.put(new Identifier("minecraft:savanna_plateau"), WolfVariant.SPOTTED);
         BIOME_TO_VARIANT_MAP.put(new Identifier("minecraft:wooded_badlands_plateau"), WolfVariant.STRIPED);
@@ -23,7 +26,9 @@ public class WolfVariantUtil {
 
     public static WolfVariant fromBiome(Identifier biomeId) {
         WolfVariant variant = BIOME_TO_VARIANT_MAP.get(biomeId);
+        WolfPort.LOGGER.info(biomeId.toString());
         if (variant == null) {
+
             variant = WolfVariant.PALE;
         }
         return variant;
