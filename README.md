@@ -1,3 +1,11 @@
+[![License](https://img.shields.io/github/license/Wolren/WolfPort)](LICENSE)
+[![Last commit](https://img.shields.io/github/last-commit/Wolren/WolfPort)](https://github.com/Wolren/WolfPort/commits)
+[![Issues](https://img.shields.io/github/issues/Wolren/WolfPort)](https://github.com/Wolren/WolfPort/issues)
+[![Repo size](https://img.shields.io/github/repo-size/Wolren/WolfPort)](https://github.com/Wolren/WolfPort)
+[![Java](https://img.shields.io/badge/Java-17-orange?logo=java)](build.gradle)
+[![Fabric](https://img.shields.io/badge/Fabric-1.20.1-blue?logo=fabric)](build.gradle)
+[![Minecraft](https://img.shields.io/badge/Minecraft-1.20.1-green?logo=minecraft)](https://minecraft.net)
+
 ## General
 
 **Aim of this port is to replace classic, stale wolves with the 24w10a+ 9 variants, effectively making them more varied without much interference with vanilla**
